@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Smart_Cookers.Data;
+using Smart_Cookers.Services.OutletService;
 using Smart_Cookers.Services.RoleService;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,7 @@ namespace Smart_Cookers
 
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IRoleService, RoleService>();
+            services.AddScoped<IOutletService, OutletService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

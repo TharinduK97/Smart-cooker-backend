@@ -28,7 +28,7 @@ namespace Smart_Cookers.Controllers
        
 
         [HttpPost]
-        public async Task<ActionResult<ServiceResponse<List<GetRoleDto>>>> AddJob(AddRoleDto newrole)
+        public async Task<ActionResult<ServiceResponse<List<GetRoleDto>>>> AddRole(AddRoleDto newrole)
         {
             return Ok(await _roleservice.AddRole(newrole));
         }
