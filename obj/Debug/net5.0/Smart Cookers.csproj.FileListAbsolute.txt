@@ -1,0 +1,28 @@
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\appsettings.Development.json
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\appsettings.json
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.exe
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.deps.json
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.runtimeconfig.json
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.runtimeconfig.dev.json
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\ref\Smart Cookers.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Smart Cookers.pdb
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Microsoft.OpenApi.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.csproj.AssemblyReference.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.GeneratedMSBuildEditorConfig.editorconfig
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.AssemblyInfoInputs.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.AssemblyInfo.cs
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.csproj.CoreCompileInputs.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.MvcApplicationPartsAssemblyInfo.cs
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.MvcApplicationPartsAssemblyInfo.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\scopedcss\bundle\Smart Cookers.styles.css
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\staticwebassets\Smart Cookers.StaticWebAssets.Manifest.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.RazorTargetAssemblyInfo.cache
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.csproj.CopyComplete
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\ref\Smart Cookers.dll
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.pdb
+D:\Allion\Back end\Smart Cookers\Smart Cookers\obj\Debug\net5.0\Smart Cookers.genruntimeconfig.cache
