@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Smart_Cookers.Models
 {
@@ -8,5 +9,8 @@ namespace Smart_Cookers.Models
         public int DoorNumber { get; set; }
         public string Street { get; set; }
         public string City { get; set; }
+        public List<StaffMember> StaffMembers { get; set; }
+
+
     }
 }
