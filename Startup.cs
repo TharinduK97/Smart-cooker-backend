@@ -9,6 +9,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Smart_Cookers.Data;
+using Smart_Cookers.Services.RoleService;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace Smart_Cookers
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            //Cores policy
             services.AddCors(options =>
             {
                 options.AddDefaultPolicy(
@@ -50,16 +51,19 @@ namespace Smart_Cookers
                     });
 
             });
+            //dbcontext
             services.AddDbContext<DataContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+            //swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Smart_Cookers", Version = "v1" });
             });
 
             services.AddAutoMapper(typeof(Startup));
+            services.AddScoped<IRoleService, RoleService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
