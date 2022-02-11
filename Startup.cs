@@ -66,6 +66,7 @@ namespace Smart_Cookers
             services.AddAutoMapper(typeof(Startup));
             services.AddScoped<IRoleService, RoleService>();
             services.AddScoped<IOutletService, OutletService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
