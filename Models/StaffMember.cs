@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Smart_Cookers.Models
 {
@@ -18,5 +19,7 @@ namespace Smart_Cookers.Models
         public WorkingStatus WorkingStatus { get; set; }
         public Role Role { get; set; }
         public Outlet Outlet { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Order> Orders { get; set; }
     }
 }
