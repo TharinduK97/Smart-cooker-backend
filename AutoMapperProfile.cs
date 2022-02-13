@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Smart_Cookers.Dtos.ImageDtos;
 using Smart_Cookers.Dtos.OutletDtos;
 using Smart_Cookers.Dtos.ProductDtos;
 using Smart_Cookers.Dtos.RoleDtos;
@@ -16,6 +17,8 @@ namespace Smart_Cookers
             CreateMap<AddOutletDto, Outlet>();
             CreateMap<Product, GetProductDto>();
             CreateMap<AddProductDto, Product>();
+            CreateMap<Image, GetImageDto>();
+            CreateMap<AssignProdcutDto, OutletProduct>();
         }
        
     }
