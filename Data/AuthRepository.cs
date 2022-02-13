@@ -102,7 +102,7 @@ namespace Smart_Cookers.Data
             {
                 new Claim(ClaimTypes.NameIdentifier, staffMember.Id.ToString()),
                 new Claim(ClaimTypes.Name, staffMember.Email),
-                new Claim(ClaimTypes.Role, staffMember.Role.ToString())
+               // new Claim(ClaimTypes.Role, staffMember.Role.title)
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));

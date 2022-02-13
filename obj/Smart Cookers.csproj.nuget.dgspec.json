@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Allion\\Back end\\Smart Cookers\\Smart Cookers\\Smart Cookers.csproj": {}
+    "D:\\Allion\\Back end\\smart cookers\\Smart Cookers\\Smart Cookers.csproj": {}
   },
   "projects": {
-    "D:\\Allion\\Back end\\Smart Cookers\\Smart Cookers\\Smart Cookers.csproj": {
+    "D:\\Allion\\Back end\\smart cookers\\Smart Cookers\\Smart Cookers.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Allion\\Back end\\Smart Cookers\\Smart Cookers\\Smart Cookers.csproj",
+        "projectUniqueName": "D:\\Allion\\Back end\\smart cookers\\Smart Cookers\\Smart Cookers.csproj",
         "projectName": "Smart Cookers",
-        "projectPath": "D:\\Allion\\Back end\\Smart Cookers\\Smart Cookers\\Smart Cookers.csproj",
+        "projectPath": "D:\\Allion\\Back end\\smart cookers\\Smart Cookers\\Smart Cookers.csproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "D:\\Allion\\Back end\\Smart Cookers\\Smart Cookers\\obj\\",
+        "outputPath": "D:\\Allion\\Back end\\smart cookers\\Smart Cookers\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
