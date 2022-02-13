@@ -58,7 +58,9 @@ namespace Smart_Cookers.Services.ProductService
         public async Task<ServiceResponse<List<GetProductDto>>> GetAllProducts()
         {
             var serviceResponse = new ServiceResponse<List<GetProductDto>>();
-            var dbProducts = await _context.Products.ToListAsync();
+            var dbProducts = await _context.Products
+                .Include(p => p.Images)
+                .ToListAsync();
             //: await _context.AppliedJobs.Where(c => c.User.ID == GetUserId()).ToListAsync();
             serviceResponse.Data = dbProducts.Select(c => _mapper.Map<GetProductDto>(c)).ToList();
             return serviceResponse;
@@ -67,6 +69,21 @@ namespace Smart_Cookers.Services.ProductService
         public Task<ServiceResponse<List<GetProductDto>>> GetProductsByOutlet(string OutletId)
         {
             throw new System.NotImplementedException();
+        }
+
+        public async Task<ServiceResponse<List<GetProductDto>>> AssignProduct(AssignProdcutDto newProduct)
+        {
+            var serviceResponse = new ServiceResponse<List<GetProductDto>>();
+            OutletProduct  outletProduct = _mapper.Map<OutletProduct>(newProduct);
+            outletProduct.Product = await _context.Products.FirstOrDefaultAsync(u => u.Id == newProduct.ProductId);
+            outletProduct.Outlet = await _context.Outlets.FirstOrDefaultAsync(u => u.Id == newProduct.OutletId);
+
+            _context.OutletProducts.Add(outletProduct);
+            await _context.SaveChangesAsync();
+
+            serviceResponse.Data = await _context.OutletProducts
+                .Select(c => _mapper.Map<GetProductDto>(c)).ToListAsync();
+            return serviceResponse;
         }
     }
 }
