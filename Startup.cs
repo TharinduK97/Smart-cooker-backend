@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Smart_Cookers.Data;
+using Smart_Cookers.Services.CustomerService;
 using Smart_Cookers.Services.OutletService;
 using Smart_Cookers.Services.ProductService;
 using Smart_Cookers.Services.RoleService;
@@ -95,6 +96,7 @@ namespace Smart_Cookers
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerAuthRepository, CustomerAuthRepository>();
+            services.AddScoped<ICustomerService, CustomerService>();
         }
 
         

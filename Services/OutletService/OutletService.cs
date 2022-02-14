@@ -36,7 +36,9 @@ namespace Smart_Cookers.Services.OutletService
         public async Task<ServiceResponse<List<GetOutletDto>>> GetAllOutles()
         {
             var serviceResponse = new ServiceResponse<List<GetOutletDto>>();
-            var DbOutlets = await _context.Outlets.ToListAsync();
+            var DbOutlets = await _context.Outlets
+                .Include(p => p.Products)
+                .ToListAsync();
             serviceResponse.Data = DbOutlets.Select(c => _mapper.Map<GetOutletDto>(c)).ToList();
             return serviceResponse;
         }
