@@ -21,7 +21,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetProductDto>>>> GetProductsByOutlet(string OutletId)
+        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> GetProductsByOutlet(string OutletId)
         {
             return Ok(await _productService.GetProductsByOutlet(OutletId));
         }
@@ -33,7 +33,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpPost("AssignProduct")]
-        public async Task<ActionResult<ServiceResponse<List<GetProductDto>>>> AssignProduct(AssignProdcutDto newProduct)
+        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> AssignProduct(AssignProdcutDto newProduct)
         {
             return Ok(await _productService.AssignProduct(newProduct));
         }
