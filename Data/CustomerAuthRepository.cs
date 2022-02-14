@@ -118,7 +118,7 @@ namespace Smart_Cookers.Data
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, customer.Id.ToString()),
-                new Claim(ClaimTypes.Name, customer.Email),
+                new Claim(ClaimTypes.Email, customer.Email),
                // new Claim(ClaimTypes.Role, staffMember.Role.title)
             };
 

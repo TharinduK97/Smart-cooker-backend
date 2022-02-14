@@ -21,9 +21,9 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> GetProductsByOutlet(string OutletId)
+        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> GetProductsByOutlet(string Id)
         {
-            return Ok(await _productService.GetProductsByOutlet(OutletId));
+            return Ok(await _productService.GetProductsByOutlet(Id));
         }
 
         [HttpGet("GetAll")]

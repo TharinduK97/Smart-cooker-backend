@@ -66,11 +66,12 @@ namespace Smart_Cookers.Services.ProductService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetAssignProductDto>>> GetProductsByOutlet(string OutletId)
+        public async Task<ServiceResponse<List<GetAssignProductDto>>> GetProductsByOutlet(string Id)
         {
             var serviceResponse = new ServiceResponse<List<GetAssignProductDto>>();
-            var dbOutletProduct = await _context.OutletProducts.            
-                Where(c => c.OutletId == Guid.Parse(OutletId)).ToListAsync();
+            var dbOutletProduct = await _context.OutletProducts
+                
+                .Where(c => c.OutletId == Guid.Parse(Id)).ToListAsync();
             serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
             return serviceResponse;
 
