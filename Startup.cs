@@ -94,6 +94,7 @@ namespace Smart_Cookers
                });
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IProductService, ProductService>();
+            services.AddScoped<ICustomerAuthRepository, CustomerAuthRepository>();
         }
 
         
