@@ -73,10 +73,25 @@ namespace Smart_Cookers.Controllers
             return Ok(response);
         }
 
-        [HttpPost("CustomerLogin")]
+        [HttpPost("StaffLogin")]
         public async Task<ActionResult<ServiceResponse<string>>> Login(StaffMemberLoginDto request)
         {
             var response = await _authRepo.Login(
+                request.Email, request.Password
+            );
+
+            if (!response.Success)
+            {
+                return BadRequest(response);
+            }
+
+            return Ok(response);
+        }
+
+        [HttpPost("CustomerLogin")]
+        public async Task<ActionResult<ServiceResponse<string>>> CustomerLogin(StaffMemberLoginDto request)
+        {
+            var response = await _authCustomerRepo.Login(
                 request.Email, request.Password
             );
 

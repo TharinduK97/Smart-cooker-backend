@@ -1,7 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Smart_Cookers.Models;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Smart_Cookers.Data
@@ -17,9 +21,26 @@ namespace Smart_Cookers.Data
             _context = context;
             _mapper = mapper;
         }
-        public Task<ServiceResponse<string>> Login(string email, string password)
+        public async Task<ServiceResponse<string>> Login(string email, string password)
         {
-            throw new System.NotImplementedException();
+            var response = new ServiceResponse<string>();
+            var customer = await _context.Customers.FirstOrDefaultAsync(x => x.Email.ToLower().Equals(email.ToLower()));
+            if (customer == null)
+            {
+                response.Success = false;
+                response.Message = "User not found.";
+            }
+            else if (!VerifyPasswordHash(password, customer.PasswordHash, customer.PasswordSalt))
+            {
+                response.Success = false;
+                response.Message = "Wrong password.";
+            }
+            else
+            {
+                response.Data = CreateToken(customer);
+            }
+
+            return response;
         }
 
         public async Task<ServiceResponse<string>> CustomerRegister(Customer newCustomer, string password, Address address)
@@ -74,6 +95,48 @@ namespace Smart_Cookers.Data
             }
         }
 
+   
 
+        private bool VerifyPasswordHash(string password, byte[] passwordHash, byte[] passwordSalt)
+        {
+            using (var hmac = new System.Security.Cryptography.HMACSHA512(passwordSalt))
+            {
+                var computedHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                for (int i = 0; i < computedHash.Length; i++)
+                {
+                    if (computedHash[i] != passwordHash[i])
+                    {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+
+        private string CreateToken(Customer customer)
+        {
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.NameIdentifier, customer.Id.ToString()),
+                new Claim(ClaimTypes.Name, customer.Email),
+               // new Claim(ClaimTypes.Role, staffMember.Role.title)
+            };
+
+            var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_configuration.GetSection("AppSettings:Token").Value));
+
+            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
+
+            var tokendDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(claims),
+                Expires = System.DateTime.Now.AddDays(1),
+                SigningCredentials = creds
+            };
+
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var token = tokenHandler.CreateToken(tokendDescriptor);
+
+            return tokenHandler.WriteToken(token);
+        }
     }
 }
