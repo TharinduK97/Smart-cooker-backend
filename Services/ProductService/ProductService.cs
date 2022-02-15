@@ -66,15 +66,22 @@ namespace Smart_Cookers.Services.ProductService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetAssignProductDto>>> GetProductsByOutlet(string Id)
+        public async Task<ServiceResponse<List<GetAssignProductDto>>> GetProductsByOutlet(Guid Id)
         {
-            var serviceResponse = new ServiceResponse<List<GetAssignProductDto>>();
-            var dbOutletProduct = await _context.OutletProducts
-                
-                .Where(c => c.OutletId == Guid.Parse(Id)).ToListAsync();
-            serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
-            return serviceResponse;
 
+            var serviceResponse = new ServiceResponse<List<GetAssignProductDto>>();
+            var dbOutletProduct = await _context.Outlets
+                .Include(c=>c.OutletProducts)
+                .ThenInclude(x => x.Product)
+                .ThenInclude(x => x.Images)
+                .Where(x => x.Id == Id)
+                .ToListAsync();
+               //.FirstOrDefaultAsync(c => c.Id == Guid.Parse("e6dd7e4c - 81e9 - 4da0 - cb3c - 08d9ecc10534"));
+
+            serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
+            
+            //serviceResponse.Data = _mapper.Map<GetAssignProductDto>(dbOutletProduct);
+            return serviceResponse;
         }
 
         public async Task<ServiceResponse<List<GetAssignProductDto>>> AssignProduct(AssignProdcutDto newProduct)

@@ -1,11 +1,13 @@
-﻿using System;
+﻿using Smart_Cookers.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Smart_Cookers.Dtos.ProductDtos
 {
     public class GetAssignProductDto
     {
-        public int AvailableQuantity { get; set; }
-        public Guid OutletId { get; set; }
-        public Guid ProductId { get; set; }
+        public Guid Id { get; set; }
+        
+        public List<GetOutletProductDto> OutletProducts { get; set; }
     }
 }
