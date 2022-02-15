@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Smart_Cookers.Dtos.ProductDtos;
 using Smart_Cookers.Models;
 using Smart_Cookers.Services.ProductService;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -21,7 +22,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> GetProductsByOutlet(string Id)
+        public async Task<ActionResult<ServiceResponse<GetAssignProductDto>>> GetProductByOutlet(Guid Id)
         {
             return Ok(await _productService.GetProductsByOutlet(Id));
         }
