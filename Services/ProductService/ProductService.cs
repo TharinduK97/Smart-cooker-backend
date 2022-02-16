@@ -61,7 +61,7 @@ namespace Smart_Cookers.Services.ProductService
             var dbProducts = await _context.Products
                 .Include(p => p.Images)
                 .ToListAsync();
-            //: await _context.AppliedJobs.Where(c => c.User.ID == GetUserId()).ToListAsync();
+            
             serviceResponse.Data = dbProducts.Select(c => _mapper.Map<GetProductDto>(c)).ToList();
             return serviceResponse;
         }
@@ -76,17 +76,14 @@ namespace Smart_Cookers.Services.ProductService
                 .ThenInclude(x => x.Images)
                 .Where(x => x.Id == Id)
                 .ToListAsync();
-               //.FirstOrDefaultAsync(c => c.Id == Guid.Parse("e6dd7e4c - 81e9 - 4da0 - cb3c - 08d9ecc10534"));
-
             serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
-            
             //serviceResponse.Data = _mapper.Map<GetAssignProductDto>(dbOutletProduct);
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<GetAssignProductDto>>> AssignProduct(AssignProdcutDto newProduct)
+        public async Task<ServiceResponse<List<AssignProductDto>>> AssignProduct(AssignProdcutDto newProduct)
         {
-            var serviceResponse = new ServiceResponse<List<GetAssignProductDto>>();
+            var serviceResponse = new ServiceResponse<List<AssignProductDto>>();
 
             OutletProduct  outletProduct = _mapper.Map<OutletProduct>(newProduct);
             outletProduct.Product = await _context.Products.FirstOrDefaultAsync(u => u.Id == newProduct.ProductId);
@@ -96,9 +93,19 @@ namespace Smart_Cookers.Services.ProductService
             await _context.SaveChangesAsync();
 
             serviceResponse.Data = await _context.OutletProducts
-                  .Select(c => _mapper.Map<GetAssignProductDto>(c)).ToListAsync();
+                  .Select(c => _mapper.Map<AssignProductDto>(c)).ToListAsync();
             return serviceResponse;
         }
 
+        public async Task<ServiceResponse<GetProductDto>> GetSingleProduct(Guid Id)
+        {
+            var serviceResponse = new ServiceResponse<GetProductDto>();
+            var dbProduct = await _context.Products
+                
+                  .Include(p => p.Images)
+               .FirstOrDefaultAsync(c => c.Id == Id);
+            serviceResponse.Data = _mapper.Map<GetProductDto>(dbProduct);
+            return serviceResponse;
+        }
     }
 }
