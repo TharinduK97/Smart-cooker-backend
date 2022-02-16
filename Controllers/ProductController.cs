@@ -21,7 +21,15 @@ namespace Smart_Cookers.Controllers
 
         }
 
+
         [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceResponse<GetProductDto>>> GetProductById(Guid Id)
+        {
+            return Ok(await _productService.GetSingleProduct(Id));
+        }
+        
+        [HttpGet]
+        [Route("Outlet/{id}")]
         public async Task<ActionResult<ServiceResponse<GetAssignProductDto>>> GetProductByOutlet(Guid Id)
         {
             return Ok(await _productService.GetProductsByOutlet(Id));
@@ -34,7 +42,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpPost("AssignProduct")]
-        public async Task<ActionResult<ServiceResponse<List<GetAssignProductDto>>>> AssignProduct(AssignProdcutDto newProduct)
+        public async Task<ActionResult<ServiceResponse<List<AssignProductDto>>>> AssignProduct(AssignProdcutDto newProduct)
         {
             return Ok(await _productService.AssignProduct(newProduct));
         }

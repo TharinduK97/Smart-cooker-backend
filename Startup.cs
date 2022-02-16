@@ -16,6 +16,7 @@ using Smart_Cookers.Services.CustomerService;
 using Smart_Cookers.Services.OutletService;
 using Smart_Cookers.Services.ProductService;
 using Smart_Cookers.Services.RoleService;
+using Smart_Cookers.Services.StaffService;
 using Swashbuckle.AspNetCore.Filters;
 using System;
 using System.Collections.Generic;
@@ -97,6 +98,7 @@ namespace Smart_Cookers
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ICustomerAuthRepository, CustomerAuthRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IStaffService, StaffService>();
         }
 
         

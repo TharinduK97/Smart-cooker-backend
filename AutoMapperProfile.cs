@@ -5,6 +5,7 @@ using Smart_Cookers.Dtos.ImageDtos;
 using Smart_Cookers.Dtos.OutletDtos;
 using Smart_Cookers.Dtos.ProductDtos;
 using Smart_Cookers.Dtos.RoleDtos;
+using Smart_Cookers.Dtos.StaffMemberDtos;
 using Smart_Cookers.Models;
 
 namespace Smart_Cookers
@@ -25,6 +26,7 @@ namespace Smart_Cookers
             CreateMap<Customer, GetCustomerDto>();
             CreateMap<Address, GetAddressDto>();
             CreateMap<AssignProdcutDto, OutletProduct>();
+            CreateMap<StaffMember, GetStaffMemberDto>();
         }
        
     }
