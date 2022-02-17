@@ -6,7 +6,7 @@ namespace Smart_Cookers.Dtos.ProductDtos
 {
     public class GetAssignProductDto
     {
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
         
         public List<GetOutletProductDto> OutletProducts { get; set; }
     }

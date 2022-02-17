@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Smart_Cookers.Dtos.AddressDtos;
 using Smart_Cookers.Dtos.CustomerDtos;
 using Smart_Cookers.Models;
 using Smart_Cookers.Services.CustomerService;
@@ -27,6 +28,13 @@ namespace Smart_Cookers.Controllers
         public async Task<ActionResult<ServiceResponse<GetCustomerDto>>> GetSingleCustomer()
         {
             return Ok(await _customerService.GetCustomerById());
+        }
+
+        [Authorize]
+        [HttpPost("Address")]
+        public async Task<ActionResult<ServiceResponse<List<GetAddressDto>>>> AddAppliedJob(AddAddressDto newAddress)
+        {
+            return Ok(await _customerService.AddAddress(newAddress));
         }
     }
 }
