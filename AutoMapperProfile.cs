@@ -25,6 +25,7 @@ namespace Smart_Cookers
             CreateMap<Image, GetImageDto>();
             CreateMap<Customer, GetCustomerDto>();
             CreateMap<Address, GetAddressDto>();
+            CreateMap<AddAddressDto, Address>();
             CreateMap<AssignProdcutDto, OutletProduct>();
             CreateMap<StaffMember, GetStaffMemberDto>();
         }
