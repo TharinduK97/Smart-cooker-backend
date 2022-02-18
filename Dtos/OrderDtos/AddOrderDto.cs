@@ -1,6 +1,7 @@
 ﻿namespace Smart_Cookers.Dtos.OrderDtos
 {
-    public class Class
+    public class AddOrderDto
     {
+
     }
 }

@@ -12,6 +12,6 @@ namespace Smart_Cookers.Services.ProductService
         Task<ServiceResponse<GetProductDto>> GetSingleProduct(Guid Id);
         Task<ServiceResponse<List<GetAssignProductDto>>> GetProductsByOutlet(Guid Id);
         Task<ServiceResponse<List<GetProductDto>>> AddProduct(AddProductDto newProduct);
-        Task<ServiceResponse<List<AssignProductDto>>> AssignProduct(AssignProdcutDto newProduct);
+        Task<ServiceResponse<List<AssignProdcutDto>>> AssignProduct(AssignProdcutDto newProduct);
     }
 }
