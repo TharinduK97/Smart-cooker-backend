@@ -16,7 +16,7 @@ namespace Smart_Cookers.Models
         public int Price { get; set; } 
         public int Quantity { get; set;} 
         public StaffMember StaffMember { get; set; }
-        public List<Image> Images { get; set; }
+        public string ImageUrl { get; set; }
         public ICollection<Order> Orders { get; set; }
         public List<OrderProduct> OrderProducts { get; set; }
         public ICollection<Outlet> Outlets { get; set; }

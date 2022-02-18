@@ -16,8 +16,8 @@ namespace Smart_Cookers.Models
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime CreatedAt { get; set; }
-        public OrderStatus OrderStatus { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public OrderStatus OrderStatus { get; set; } = OrderStatus.Pending;
         public int TotalPrice { get; set; }
         public Customer Customer { get; set; }
         public StaffMember StaffMember { get; set; } = null;

@@ -42,7 +42,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpPost("AssignProduct")]
-        public async Task<ActionResult<ServiceResponse<List<AssignProductDto>>>> AssignProduct(AssignProdcutDto newProduct)
+        public async Task<ActionResult<ServiceResponse<List<AssignProdcutDto>>>> AssignProduct(AssignProdcutDto newProduct)
         {
             return Ok(await _productService.AssignProduct(newProduct));
         }

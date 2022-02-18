@@ -44,11 +44,7 @@ namespace Smart_Cookers.Services.ProductService
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             
-             _context.Images.Add(new Image
-            {
-                Product = product,
-                ImageUrl= newProduct.ImageUrl
-            });
+       
             await _context.SaveChangesAsync();
             serviceResponse.Data = await _context.Products
                 .Select(c => _mapper.Map<GetProductDto>(c)).ToListAsync();
@@ -59,7 +55,7 @@ namespace Smart_Cookers.Services.ProductService
         {
             var serviceResponse = new ServiceResponse<List<GetProductDto>>();
             var dbProducts = await _context.Products
-                .Include(p => p.Images)
+             
                 .ToListAsync();
             
             serviceResponse.Data = dbProducts.Select(c => _mapper.Map<GetProductDto>(c)).ToList();
@@ -73,7 +69,6 @@ namespace Smart_Cookers.Services.ProductService
             var dbOutletProduct = await _context.Outlets
                 .Include(c=>c.OutletProducts)
                 .ThenInclude(x => x.Product)
-                .ThenInclude(x => x.Images)
                 .Where(x => x.Id == Id)
                 .ToListAsync();
             serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
@@ -81,9 +76,9 @@ namespace Smart_Cookers.Services.ProductService
             return serviceResponse;
         }
 
-        public async Task<ServiceResponse<List<AssignProductDto>>> AssignProduct(AssignProdcutDto newProduct)
+        public async Task<ServiceResponse<List<AssignProdcutDto>>> AssignProduct(AssignProdcutDto newProduct)
         {
-            var serviceResponse = new ServiceResponse<List<AssignProductDto>>();
+            var serviceResponse = new ServiceResponse<List<AssignProdcutDto>>();
 
             OutletProduct  outletProduct = _mapper.Map<OutletProduct>(newProduct);
             outletProduct.Product = await _context.Products.FirstOrDefaultAsync(u => u.Id == newProduct.ProductId);
@@ -93,7 +88,7 @@ namespace Smart_Cookers.Services.ProductService
             await _context.SaveChangesAsync();
 
             serviceResponse.Data = await _context.OutletProducts
-                  .Select(c => _mapper.Map<AssignProductDto>(c)).ToListAsync();
+                  .Select(c => _mapper.Map<AssignProdcutDto>(c)).ToListAsync();
             return serviceResponse;
         }
 
@@ -101,8 +96,7 @@ namespace Smart_Cookers.Services.ProductService
         {
             var serviceResponse = new ServiceResponse<GetProductDto>();
             var dbProduct = await _context.Products
-                
-                  .Include(p => p.Images)
+               
                .FirstOrDefaultAsync(c => c.Id == Id);
             serviceResponse.Data = _mapper.Map<GetProductDto>(dbProduct);
             return serviceResponse;

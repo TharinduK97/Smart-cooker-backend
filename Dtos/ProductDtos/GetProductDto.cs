@@ -12,6 +12,6 @@ namespace Smart_Cookers.Dtos.ProductDtos
         public string Description { get; set; }
         public int Price { get; set; }
         public int Quantity { get; set; }
-        public List<GetImageDto> Images { get; set; }
+        public string imageUrl { get; set; }
     }
 }
