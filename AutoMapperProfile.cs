@@ -17,6 +17,7 @@ namespace Smart_Cookers
         {
             CreateMap<Role, GetRoleDto>();
             CreateMap<AddRoleDto, Role>();
+            CreateMap<Outlet, GetOutletOrderDto>();
             CreateMap<Outlet, GetOutletDto>();
             CreateMap<Outlet, GetAssignProductDto>();
             CreateMap<OutletProduct, GetOutletProductDto>();
@@ -29,7 +30,9 @@ namespace Smart_Cookers
             CreateMap<AssignProdcutDto, OutletProduct>();
             CreateMap<StaffMember, GetStaffMemberDto>();
             CreateMap<AddOrderDto, Order>();
+            CreateMap<AddOrderProductDto, OrderProduct>();
             CreateMap<Order, GetCustomerOrderDto>();
+
         }
        
     }

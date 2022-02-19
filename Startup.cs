@@ -13,6 +13,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Smart_Cookers.Data;
 using Smart_Cookers.Services.CustomerService;
+using Smart_Cookers.Services.OrderService;
 using Smart_Cookers.Services.OutletService;
 using Smart_Cookers.Services.ProductService;
 using Smart_Cookers.Services.RoleService;
@@ -99,6 +100,7 @@ namespace Smart_Cookers
             services.AddScoped<ICustomerAuthRepository, CustomerAuthRepository>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IStaffService, StaffService>();
+            services.AddScoped<IOrderService, OrderService>();
         }
 
         

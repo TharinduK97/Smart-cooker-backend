@@ -37,15 +37,14 @@ namespace Smart_Cookers.Services.ProductService
                 ProductName = newProduct.ProductName,
                 Description = newProduct.Description,
                 Price = newProduct.Price,
-                Quantity = newProduct.Quantity
+                Quantity = newProduct.Quantity,
+                ImageUrl= newProduct.ImageUrl,
             });
             product.StaffMember = await _context.StaffMembers.FirstOrDefaultAsync(u => u.Id == GetUserId());
            
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
             
-       
-            await _context.SaveChangesAsync();
             serviceResponse.Data = await _context.Products
                 .Select(c => _mapper.Map<GetProductDto>(c)).ToListAsync();
             return serviceResponse;
