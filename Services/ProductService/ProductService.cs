@@ -100,5 +100,21 @@ namespace Smart_Cookers.Services.ProductService
             serviceResponse.Data = _mapper.Map<GetProductDto>(dbProduct);
             return serviceResponse;
         }
+
+        public async Task<ServiceResponse<GetSingleOutletProductDto>> GetSingleProductByOutlet(Guid ProductId, Guid OutletId)
+        {
+
+            var serviceResponse = new ServiceResponse<GetSingleOutletProductDto>();
+            var dbOutletProduct = await _context.OutletProducts
+                .Include(c => c.Outlet)
+                .Include(c => c.Product)
+               // .Where(x => x.Id == OutletId)
+               // .ToListAsync();
+            .FirstOrDefaultAsync(c => c.Outlet.Id == OutletId && c.Product.Id == ProductId );
+            serviceResponse.Data = _mapper.Map<GetSingleOutletProductDto>(dbOutletProduct);
+            //serviceResponse.Data = dbOutletProduct.Select(c => _mapper.Map<GetAssignProductDto>(c)).ToList();
+            
+            return serviceResponse;
+        }
     }
 }
