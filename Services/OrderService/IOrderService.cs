@@ -8,5 +8,7 @@ namespace Smart_Cookers.Services.OrderService
     public interface IOrderService
     {
         Task<ServiceResponse<List<GetCustomerOrderDto>>> AddNewOrder(AddOrderDto newOrder);
+        Task<ServiceResponse<List<GetCustomerOrderDto>>> GetOrdersByCustomer();
+
     }
 }
