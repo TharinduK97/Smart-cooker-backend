@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Smart_Cookers.Dtos.OrderDtos;
 using Smart_Cookers.Models;
 using Smart_Cookers.Services.OrderService;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -32,6 +33,14 @@ namespace Smart_Cookers.Controllers
         public async Task<ActionResult<ServiceResponse<List<GetCustomerOrderDto>>>> Get()
         {
             return Ok(await _orderService.GetOrdersByCustomer());
+        }
+
+       // [Authorize]
+        [HttpGet("GetOrderProducts")]
+        public async Task<ActionResult<ServiceResponse<List<GetCustomerOrderDto>>>> GetOrderProducts(Guid Id)
+        {
+            return Ok(await _orderService.GetOrderProducts(Id));
+
         }
     }
 }

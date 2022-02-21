@@ -34,6 +34,7 @@ namespace Smart_Cookers
             CreateMap<Order, GetCustomerOrderDto>();
             
                  CreateMap<OutletProduct, GetSingleOutletProductDto>();
+            CreateMap<OrderProduct, GetOrderProductsDto>();
 
         }
        

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Smart_Cookers.Data;
 using Smart_Cookers.Dtos.OrderDtos;
+using Smart_Cookers.Dtos.ProductDtos;
 using Smart_Cookers.Models;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,14 @@ namespace Smart_Cookers.Services.OrderService
                 OrderProduct orderProduct = _mapper.Map<OrderProduct>(productOrder);
                 orderProduct.Order = order;
                 _context.OrderProducts.Add(orderProduct);
+               
+                    OutletProduct outletProduct = await _context.OutletProducts
+                .Include(c => c.Outlet)
+                .Include(c => c.Product)
+                .FirstOrDefaultAsync(c => c.Outlet.Id == newOrder.OutletId && c.Product.Id == productOrder.ProductId);
+                outletProduct.AvailableQuantity = outletProduct.AvailableQuantity - productOrder.Quantity;
+                await _context.SaveChangesAsync();
+
             }
             await _context.SaveChangesAsync();
 
@@ -52,6 +61,19 @@ namespace Smart_Cookers.Services.OrderService
                   .Select(c => _mapper.Map<GetCustomerOrderDto>(c)).ToListAsync();
             return serviceResponse;
 
+        }
+
+        public async Task<ServiceResponse<List<GetOrderProductsDto>>> GetOrderProducts(Guid Id)
+        {
+            var serviceResponse = new ServiceResponse<List<GetOrderProductsDto>>();
+            var products = await _context.OrderProducts
+                .Include(p => p.Product)
+                .Include(p => p.Order)
+                .Where(c => c.Order.Id == Id)
+                .ToListAsync();
+            serviceResponse.Data = products.Select(c => _mapper.Map<GetOrderProductsDto>(c)).ToList();
+            
+            return serviceResponse;
         }
 
         public async Task<ServiceResponse<List<GetCustomerOrderDto>>> GetOrdersByCustomer()
