@@ -55,7 +55,7 @@ namespace Smart_Cookers.Controllers
         }
 
         [HttpGet("GetSingleProduct")]
-        public async Task<ActionResult<ServiceResponse<List<GetSingleOutletProductDto>>>> GetSingleProductByOutlet(Guid ProductId,Guid OutletId)
+        public async Task<ActionResult<ServiceResponse<List<GetProductDto>>>> GetSingleProductByOutlet(Guid ProductId,Guid OutletId)
         {
             return Ok(await _productService.GetSingleProductByOutlet( ProductId, OutletId));
         }
